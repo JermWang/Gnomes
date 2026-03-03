@@ -285,7 +285,7 @@ export default function EvidenceBoard() {
                 sizes="(max-width: 768px) 80vw, 33vw"
                 loading="lazy"
               />
-              {/* MS Paint-style crude red circle + arrow on hover (intentional low-fi contrast) */}
+              {/* MS Paint-style crude red circle on hover */}
               <svg
                 className="absolute inset-0 w-full h-full opacity-0 group-hover:opacity-90 transition-opacity pointer-events-none"
                 viewBox="0 0 100 100" preserveAspectRatio="none"
@@ -295,9 +295,6 @@ export default function EvidenceBoard() {
                   strokeLinecap="round"
                   style={{ filter: "url(#rough)" }}
                 />
-                <line x1="20" y1="32" x2="8" y2="20"
-                  stroke="#ff2b2b" strokeWidth="3" strokeLinecap="round" />
-                <polygon points="5,14 14,24 18,13" fill="#ff2b2b" />
               </svg>
             </div>
 
