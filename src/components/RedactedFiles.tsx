@@ -34,7 +34,7 @@ export default function RedactedFiles() {
       </div>
 
       <motion.h2
-        className="font-impact text-4xl md:text-6xl text-center text-gnome-dark mb-12 relative z-10"
+        className="font-impact text-4xl md:text-6xl text-center text-gnome-dark mb-12 relative z-10 w-full"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
