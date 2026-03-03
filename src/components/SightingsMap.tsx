@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { WORLD_MAP_PATHS } from "./worldMapPaths";
 
 interface Sighting {
   id: number;
@@ -202,38 +203,17 @@ export default function SightingsMap() {
                 return <line key={`lng${lng}`} x1={x} y1="0" x2={x} y2="500" stroke="#00ff44" strokeWidth="0.3" opacity="0.08" />;
               })}
 
-              {/* ── CONTINENT OUTLINES (detailed) ── */}
-              <g fill="none" strokeWidth="1" strokeLinejoin="round" strokeLinecap="round">
-                {/* North America */}
-                <path d="M 130,85 L 140,70 155,65 175,68 195,78 210,72 225,80 240,95 248,110 260,118 268,130 275,148 280,160 275,170 265,168 255,175 240,165 230,158 215,162 195,155 178,142 165,130 150,118 135,105 130,95 Z" stroke="#00ff44" opacity="0.25" />
-                {/* Central America */}
-                <path d="M 215,162 L 218,172 225,182 230,195 235,205 240,210" stroke="#00ff44" opacity="0.2" />
-                {/* South America */}
-                <path d="M 240,210 L 255,215 270,230 280,250 290,275 295,300 288,325 275,345 260,355 250,340 245,320 240,295 235,270 230,250 232,230 238,215 Z" stroke="#00ff44" opacity="0.25" />
-                {/* Europe */}
-                <path d="M 470,80 L 480,75 495,78 510,82 520,90 530,88 540,95 535,105 525,110 515,108 505,112 495,105 485,100 475,95 470,88 Z" stroke="#00ff44" opacity="0.25" />
-                {/* UK */}
-                <path d="M 468,82 L 472,75 476,80 472,86 Z" stroke="#00ff44" opacity="0.2" />
-                {/* Scandinavia */}
-                <path d="M 510,55 L 520,48 530,55 525,68 518,75 510,72 Z" stroke="#00ff44" opacity="0.2" />
-                {/* Africa */}
-                <path d="M 485,165 L 500,160 520,165 535,180 540,200 545,225 540,260 530,290 515,310 500,320 490,310 480,290 475,260 478,230 480,200 482,180 Z" stroke="#00ff44" opacity="0.25" />
-                {/* Russia / Asia */}
-                <path d="M 540,85 L 570,78 610,75 650,72 690,78 730,82 760,90 780,95 790,85 810,88 830,95 820,110 800,115 770,112 740,118 710,115 680,120 650,115 620,110 590,105 560,100 545,95 Z" stroke="#00ff44" opacity="0.25" />
-                {/* India */}
-                <path d="M 650,155 L 665,165 670,185 665,210 655,225 640,215 635,195 640,175 Z" stroke="#00ff44" opacity="0.2" />
-                {/* SE Asia */}
-                <path d="M 710,165 L 730,170 745,180 740,195 725,190 715,180 Z" stroke="#00ff44" opacity="0.2" />
-                {/* China / East Asia */}
-                <path d="M 680,110 L 720,105 750,115 760,130 750,145 730,150 710,148 690,140 675,130 Z" stroke="#00ff44" opacity="0.2" />
-                {/* Japan */}
-                <path d="M 790,115 L 798,108 802,118 795,128 788,122 Z" stroke="#00ff44" opacity="0.2" />
-                {/* Australia */}
-                <path d="M 770,290 L 800,280 830,285 850,300 845,325 825,340 800,338 780,325 770,305 Z" stroke="#00ff44" opacity="0.25" />
-                {/* Indonesia */}
-                <path d="M 720,235 L 740,232 760,238 780,240 775,248 755,250 735,245 Z" stroke="#00ff44" opacity="0.15" />
-                {/* Middle East */}
-                <path d="M 570,140 L 590,135 610,142 620,155 610,165 595,162 580,155 Z" stroke="#00ff44" opacity="0.2" />
+              {/* ── LANDMASS FILL (subtle) ── */}
+              <g fill="#00ff44" fillOpacity="0.03" stroke="none">
+                {WORLD_MAP_PATHS.map((d, i) => (
+                  <path key={`fill-${i}`} d={d} />
+                ))}
+              </g>
+              {/* ── COASTLINE OUTLINES (detailed) ── */}
+              <g fill="none" stroke="#00ff44" strokeWidth="0.8" strokeLinejoin="round" strokeLinecap="round" opacity="0.3">
+                {WORLD_MAP_PATHS.map((d, i) => (
+                  <path key={`stroke-${i}`} d={d} />
+                ))}
               </g>
 
               {/* ── CONNECTION LINES ── */}
