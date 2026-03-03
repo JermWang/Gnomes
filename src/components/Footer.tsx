@@ -46,7 +46,7 @@ export default function Footer() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/gifs/AZTOSQLI6ZII47J2JOSUYKAIUAWOKASD.gif" alt="Gnome" className="h-8 pixel-gif opacity-70" />
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/gifs/1109.gif" alt="Gnome" className="h-8 pixel-gif opacity-80" />
+        <img src="/gifs/1107.gif" alt="Gnome" className="h-8 pixel-gif opacity-80" />
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/gifs/5GBPEKPY4LQRCKJAAHWB5TTQSHSAK4PI.gif" alt="Gnome" className="h-8 pixel-gif opacity-75" />
       </div>
