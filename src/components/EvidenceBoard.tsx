@@ -243,7 +243,7 @@ export default function EvidenceBoard() {
         EVIDENCE BOARD
       </motion.h2>
       <p className="font-mono text-gnome-yellow text-center text-sm mb-12 relative z-10">
-        // CLICK TO ENHANCE — HOVER TO INVESTIGATE //
+        {"//"} CLICK TO ENHANCE — HOVER TO INVESTIGATE {"//"}
       </p>
 
       {/* SVG red strings connecting cards */}

@@ -94,7 +94,7 @@ export default function Hero() {
       {/* ── MAIN CONTENT ── */}
       <div className="relative z-10 mb-1 mt-10" style={{ transform: "rotate(0.8deg)" }}>
         <span className="font-mono text-[9px] text-gnome-yellow/50 tracking-[0.4em]">
-          // DECLASSIFIED TRANSMISSION //
+          {"//"} DECLASSIFIED TRANSMISSION {"//"}
         </span>
       </div>
 

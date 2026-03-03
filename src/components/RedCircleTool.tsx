@@ -1,5 +1,5 @@
 "use client";
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 
 interface Circle {
   id: number;
@@ -12,7 +12,7 @@ interface Circle {
 export default function RedCircleTool() {
   const [active, setActive] = useState(false);
   const [circles, setCircles] = useState<Circle[]>([]);
-  const idRef = { current: 0 };
+  const idRef = useRef(0);
 
   const handleClick = useCallback(
     (e: MouseEvent) => {

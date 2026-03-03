@@ -439,7 +439,7 @@ export default function Gnomeland() {
                 textShadow: "1px 1px 0 rgba(0,0,0,0.8)",
               }}
             >
-              // click the orb //
+              {"//"} click the orb {"//"}
             </p>
             {/* Hand-drawn underline (SVG scrawl) */}
             <svg viewBox="0 0 120 8" className="w-full" style={{ marginTop: "-2px", opacity: 0.6 }}>

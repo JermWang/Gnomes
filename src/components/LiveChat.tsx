@@ -98,7 +98,7 @@ export default function LiveChat() {
           {/* Fake input */}
           <div className="px-2 py-2 border-t border-gnome-yellow/10">
             <div className="font-mono text-[9px] text-gray-600 bg-[#0a0a14] px-2 py-1 rounded cursor-not-allowed">
-              // observers only — no posting //
+              {"//"} observers only — no posting {"//"}
             </div>
           </div>
         </div>
