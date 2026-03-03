@@ -38,7 +38,7 @@ export default function Hero() {
       style={{ background: "url('/we found them.png') center center / cover no-repeat" }}
     >
       {/* Dark overlay for text readability */}
-      <div className="absolute inset-0 bg-black/60 pointer-events-none" />
+      <div className="absolute inset-0 bg-black/35 pointer-events-none" />
 
       {/* Camera flash */}
       <AnimatePresence>
