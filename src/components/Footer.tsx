@@ -34,7 +34,7 @@ export default function Footer() {
     <footer className="relative overflow-hidden bg-gnome-dark border-t-2 border-gnome-red/30">
 
       {/* ── 88×31 GIF BANNER STRIP (top of footer — GIFs only) ── */}
-      <div className="bg-[#0a0a14] border-b border-gnome-purple/20 py-2 px-4 flex flex-wrap items-center justify-center gap-3">
+      <div className="bg-[#0a0a14] border-b border-gnome-purple/20 py-2 px-2 sm:px-4 flex flex-wrap items-center justify-center gap-2 sm:gap-3 overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/gifs/871.gif"      alt="Waar is jy"    className="h-8 opacity-90 hover:opacity-100 transition-opacity" />
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -54,7 +54,7 @@ export default function Footer() {
       <div className="relative z-20 py-10 px-4 max-w-4xl mx-auto">
 
         {/* Gnome mascot + counter row */}
-        <div className="flex flex-wrap items-center justify-between gap-6 mb-8">
+        <div className="flex flex-col sm:flex-row flex-wrap items-center justify-between gap-4 sm:gap-6 mb-8">
 
           {/* wizardgnome mascot */}
           <div className="flex items-center gap-3">
@@ -76,7 +76,7 @@ export default function Footer() {
           </div>
 
           {/* Last updated + Social */}
-          <div className="font-mono text-[10px] text-gray-600 text-right">
+          <div className="font-mono text-[10px] text-gray-600 text-center sm:text-right">
             <div>LAST UPDATED: <span className="text-gnome-red">{timeStr}</span></div>
             <div className="mt-1 text-gnome-yellow animate-blink">● STAY AWAKE ●</div>
             <a

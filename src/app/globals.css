@@ -236,3 +236,27 @@
     width: 80vw;
   }
 }
+
+/* Mobile-specific optimizations */
+@media (max-width: 640px) {
+  /* Ensure no horizontal overflow */
+  html, body {
+    overflow-x: hidden;
+  }
+
+  /* Bigger touch targets for small buttons */
+  .stamp {
+    padding: 3px 8px;
+    letter-spacing: 1.5px;
+  }
+
+  /* Smoother scrolling on iOS */
+  main {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Reduce heavy box shadows on mobile for performance */
+  .pin-shadow {
+    filter: drop-shadow(1px 2px 3px rgba(0,0,0,0.3));
+  }
+}

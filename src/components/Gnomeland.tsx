@@ -385,7 +385,7 @@ export default function Gnomeland() {
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-[60vh]">
         <motion.h2
-          className="font-impact text-5xl md:text-7xl text-gnome-purple-light text-center mb-0"
+          className="font-impact text-4xl sm:text-5xl md:text-7xl text-gnome-purple-light text-center mb-0"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -394,7 +394,7 @@ export default function Gnomeland() {
         </motion.h2>
 
         <motion.p
-          className="font-mono text-gnome-yellow text-center mb-12 text-sm tracking-widest"
+          className="font-mono text-gnome-yellow text-center mb-12 text-xs sm:text-sm tracking-widest px-2"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -405,7 +405,7 @@ export default function Gnomeland() {
 
         {/* Gnomeland image */}
         <motion.div
-          className="relative w-full max-w-2xl aspect-video mb-12 rounded-lg overflow-hidden border-2 border-gnome-purple/40"
+          className="relative w-full max-w-2xl aspect-video mb-12 rounded-lg overflow-hidden border-2 border-gnome-purple/40 mx-4 sm:mx-auto"
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
@@ -482,7 +482,7 @@ export default function Gnomeland() {
               exit={{ opacity: 0 }}
               transition={{ type: "spring", damping: 10 }}
             >
-              <div className="stamp text-6xl md:text-8xl !border-8">CONFIDENTIAL</div>
+              <div className="stamp text-4xl sm:text-6xl md:text-8xl !border-4 sm:!border-8">CONFIDENTIAL</div>
             </motion.div>
           )}
         </AnimatePresence>
@@ -491,7 +491,7 @@ export default function Gnomeland() {
         <AnimatePresence>
           {showSecret && (
             <motion.div
-              className="mt-6 bg-gnome-dark border-2 border-gnome-red p-6 max-w-md w-full"
+              className="mt-6 bg-gnome-dark border-2 border-gnome-red p-4 sm:p-6 max-w-md w-full mx-4 sm:mx-auto"
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}

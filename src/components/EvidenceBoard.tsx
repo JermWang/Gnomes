@@ -331,7 +331,7 @@ export default function EvidenceBoard() {
 
             {/* Modal content */}
             <motion.div
-              className="relative bg-gnome-dark border border-gnome-red/40 p-6 max-w-3xl w-full z-10 flex flex-col md:flex-row gap-6"
+              className="relative bg-gnome-dark border border-gnome-red/40 p-4 sm:p-6 max-w-3xl w-full z-10 flex flex-col md:flex-row gap-4 sm:gap-6 max-h-[90vh] overflow-y-auto"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
@@ -340,7 +340,7 @@ export default function EvidenceBoard() {
               {/* Close */}
               <button
                 onClick={() => { setSelectedCard(null); setEnhanced(false); }}
-                className="absolute top-2 right-3 text-gnome-red font-impact text-2xl hover:scale-110 transition-transform"
+                className="absolute top-2 right-3 text-gnome-red font-impact text-2xl hover:scale-110 transition-transform p-2 z-20"
               >
                 ✕
               </button>
@@ -362,7 +362,7 @@ export default function EvidenceBoard() {
                 <p className="font-mono text-xs text-gnome-yellow">{selectedCard.caption}</p>
 
                 {/* Zoom bubble */}
-                <div className="relative w-48 h-48 mx-auto rounded-full overflow-hidden border-4 border-gnome-red">
+                <div className="relative w-32 h-32 sm:w-48 sm:h-48 mx-auto rounded-full overflow-hidden border-4 border-gnome-red">
                   <Image
                     src={selectedCard.image}
                     alt="Enhanced zoom"

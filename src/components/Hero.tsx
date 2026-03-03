@@ -65,7 +65,7 @@ export default function Hero() {
 
       {/* BREAKING tag */}
       <motion.div
-        className="absolute top-7 left-4 bg-gnome-red text-white font-impact text-xs px-2 py-1 z-20 animate-blink"
+        className="absolute top-7 left-4 bg-gnome-red text-white font-impact text-xs px-2 py-1 z-20 animate-blink hidden sm:block"
         initial={{ x: -100 }}
         animate={{ x: 0 }}
       >
@@ -75,7 +75,7 @@ export default function Hero() {
       {/* ── SCATTERED GIFS ── */}
 
       {/* wizardgnome — LEFT hero mascot */}
-      <div className="absolute left-0 md:left-10 bottom-14 z-10 pointer-events-none">
+      <div className="absolute left-0 md:left-10 bottom-14 z-10 pointer-events-none hidden sm:block">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/gifs/wizardgnome.gif" alt="Wizard Gnome" width={150}
           className="opacity-95 drop-shadow-[0_0_18px_rgba(123,60,255,0.9)]" />
@@ -99,7 +99,7 @@ export default function Hero() {
       </div>
 
       <motion.h1
-        className="font-impact text-5xl md:text-8xl lg:text-[7rem] text-white text-center cursor-pointer select-none z-10 relative px-4 leading-none"
+        className="font-impact text-4xl sm:text-5xl md:text-8xl lg:text-[7rem] text-white text-center cursor-pointer select-none z-10 relative px-4 leading-none"
         style={{ transform: "rotate(-2deg)", textShadow: "4px 4px 0px #ff2b2b, 8px 8px 0px rgba(123,60,255,0.25)" }}
         onClick={handleClick}
         whileHover={{ scale: 1.02 }}
@@ -131,7 +131,7 @@ export default function Hero() {
 
       {/* Contract address + Twitter row */}
       <motion.div
-        className="mt-6 z-10 flex flex-col sm:flex-row items-center gap-3"
+        className="mt-6 z-10 flex flex-col sm:flex-row items-center gap-3 px-4 w-full sm:w-auto"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.0 }}
@@ -140,7 +140,7 @@ export default function Hero() {
         {TOKEN_ADDRESS && (
           <motion.button
             onClick={copyAddress}
-            className="flex items-center gap-2 font-mono text-xs md:text-sm px-5 py-2.5 text-white rounded-sm"
+            className="flex items-center gap-2 font-mono text-[10px] sm:text-xs md:text-sm px-3 sm:px-5 py-2.5 text-white rounded-sm w-full sm:w-auto justify-center"
             style={{
               background: "linear-gradient(180deg, #9b4dff 0%, #6a1fcf 50%, #5010a8 100%)",
               boxShadow: "0 4px 0 #3a0980, 0 6px 12px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.25)",
@@ -150,7 +150,7 @@ export default function Hero() {
             whileHover={{ y: -1 }}
             whileTap={{ y: 3, boxShadow: "0 1px 0 #3a0980, 0 2px 4px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.15)" }}
           >
-            <span className="truncate max-w-[160px] md:max-w-[220px]">
+            <span className="truncate max-w-[140px] sm:max-w-[160px] md:max-w-[220px]">
               {TOKEN_ADDRESS}
             </span>
             <span className={`shrink-0 font-bold ${copied ? "text-green-300" : "text-yellow-300"}`}>
@@ -164,7 +164,7 @@ export default function Hero() {
           href="https://x.com/GnomesOnSOL"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 font-mono text-xs md:text-sm px-5 py-2.5 text-white rounded-sm no-underline"
+          className="flex items-center gap-2 font-mono text-xs md:text-sm px-4 sm:px-5 py-2.5 text-white rounded-sm no-underline w-full sm:w-auto justify-center"
           style={{
             background: "linear-gradient(180deg, #444 0%, #222 50%, #111 100%)",
             boxShadow: "0 4px 0 #000, 0 6px 12px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.2)",
@@ -185,7 +185,7 @@ export default function Hero() {
           href="https://t.me/GnomesPortal"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 font-mono text-xs md:text-sm px-5 py-2.5 text-white rounded-sm no-underline"
+          className="flex items-center gap-2 font-mono text-xs md:text-sm px-4 sm:px-5 py-2.5 text-white rounded-sm no-underline w-full sm:w-auto justify-center"
           style={{
             background: "linear-gradient(180deg, #2AABEE 0%, #1E90D0 50%, #1578B0 100%)",
             boxShadow: "0 4px 0 #0e5a82, 0 6px 12px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.25)",
