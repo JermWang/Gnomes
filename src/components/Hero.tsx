@@ -129,54 +129,74 @@ export default function Hero() {
         $GNOMES
       </motion.p>
 
-      {/* Copy contract address */}
-      {TOKEN_ADDRESS && (
-        <motion.button
-          onClick={copyAddress}
-          className="mt-6 z-10 flex items-center gap-2 bg-gnome-purple/20 border border-gnome-purple/50 text-gnome-purple-light font-mono text-xs md:text-sm px-4 py-2 hover:bg-gnome-purple/40 transition-all duration-200 group"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.0 }}
-          whileHover={{ scale: 1.03 }}
-          whileTap={{ scale: 0.97 }}
+      {/* Contract address + Twitter row */}
+      <motion.div
+        className="mt-6 z-10 flex flex-col sm:flex-row items-center gap-3"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.0 }}
+      >
+        {/* Copy Contract Address — 3D retro button */}
+        {TOKEN_ADDRESS && (
+          <motion.button
+            onClick={copyAddress}
+            className="flex items-center gap-2 font-mono text-xs md:text-sm px-5 py-2.5 text-white rounded-sm"
+            style={{
+              background: "linear-gradient(180deg, #9b4dff 0%, #6a1fcf 50%, #5010a8 100%)",
+              boxShadow: "0 4px 0 #3a0980, 0 6px 12px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.25)",
+              border: "2px solid #7b3cff",
+              textShadow: "1px 1px 2px rgba(0,0,0,0.6)",
+            }}
+            whileHover={{ y: -1 }}
+            whileTap={{ y: 3, boxShadow: "0 1px 0 #3a0980, 0 2px 4px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.15)" }}
+          >
+            <span className="truncate max-w-[160px] md:max-w-[220px]">
+              {TOKEN_ADDRESS}
+            </span>
+            <span className={`shrink-0 font-bold ${copied ? "text-green-300" : "text-yellow-300"}`}>
+              {copied ? "COPIED ✓" : "📋 COPY"}
+            </span>
+          </motion.button>
+        )}
+
+        {/* Twitter/X — 3D retro button */}
+        <motion.a
+          href="https://x.com/GnomesOnSOL"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 font-mono text-xs md:text-sm px-5 py-2.5 text-white rounded-sm no-underline"
+          style={{
+            background: "linear-gradient(180deg, #444 0%, #222 50%, #111 100%)",
+            boxShadow: "0 4px 0 #000, 0 6px 12px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.2)",
+            border: "2px solid #555",
+            textShadow: "1px 1px 2px rgba(0,0,0,0.8)",
+          }}
+          whileHover={{ y: -1 }}
+          whileTap={{ y: 3, boxShadow: "0 1px 0 #000, 0 2px 4px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1)" }}
         >
-          <span className="truncate max-w-[180px] md:max-w-xs opacity-70 group-hover:opacity-100 transition-opacity">
-            {TOKEN_ADDRESS}
-          </span>
-          <span className={`shrink-0 text-xs font-bold transition-colors ${
-            copied ? "text-green-400" : "text-gnome-yellow"
-          }`}>
-            {copied ? "COPIED ✓" : "COPY"}
-          </span>
-        </motion.button>
-      )}
+          <svg className="w-4 h-4 fill-white" viewBox="0 0 24 24">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+          </svg>
+          <span>@GnomesOnSOL</span>
+        </motion.a>
+      </motion.div>
 
       <motion.a
         href="#evidence"
-        className="mt-4 z-10 border-2 border-gnome-red text-gnome-red font-mono px-6 py-3 hover:bg-gnome-red hover:text-white transition-colors duration-200 text-base md:text-lg"
+        className="mt-5 z-10 font-mono px-6 py-3 text-white text-base md:text-lg rounded-sm no-underline"
+        style={{
+          background: "linear-gradient(180deg, #ff4444 0%, #cc1111 50%, #aa0000 100%)",
+          boxShadow: "0 4px 0 #660000, 0 6px 12px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.2)",
+          border: "2px solid #ff2b2b",
+          textShadow: "1px 1px 2px rgba(0,0,0,0.6)",
+        }}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.2 }}
-        whileHover={{ scale: 1.05 }}
+        whileHover={{ y: -1 }}
+        whileTap={{ y: 3, boxShadow: "0 1px 0 #660000, 0 2px 4px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1)" }}
       >
         START INVESTIGATING ↓
-      </motion.a>
-
-      {/* Twitter/X Link */}
-      <motion.a
-        href="https://x.com/GnomesOnSOL"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="absolute top-7 left-4 z-20 flex items-center gap-2 bg-gnome-dark/80 border border-gnome-purple/50 px-3 py-2 hover:bg-gnome-purple/20 transition-all group"
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.5 }}
-        whileHover={{ scale: 1.05 }}
-      >
-        <svg className="w-4 h-4 fill-gnome-purple-light group-hover:fill-gnome-yellow transition-colors" viewBox="0 0 24 24">
-          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-        </svg>
-        <span className="font-mono text-xs text-gnome-purple-light group-hover:text-gnome-yellow transition-colors">@GnomesOnSOL</span>
       </motion.a>
 
       {/* Stamps */}
