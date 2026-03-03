@@ -121,7 +121,7 @@ export default function SightingsMap() {
     <section
       id="sightings"
       className="relative py-16 px-4 md:px-8 overflow-hidden"
-      style={{ background: "linear-gradient(180deg, #030308 0%, #0a0a18 40%, #080812 100%)" }}
+      style={{ background: "linear-gradient(180deg, #080815 0%, #0e0e22 40%, #0c0c1a 100%)" }}
     >
       <div className="max-w-7xl mx-auto">
 
@@ -155,7 +155,7 @@ export default function SightingsMap() {
 
           {/* MAP */}
           <motion.div
-            className="relative bg-[#020208] border border-green-900/40 overflow-hidden"
+            className="relative bg-[#0a0a1a] border border-green-900/40 overflow-hidden"
             initial={{ opacity: 0, scale: 0.97 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -163,7 +163,7 @@ export default function SightingsMap() {
           >
             {/* Grid overlay */}
             <div className="absolute inset-0 pointer-events-none">
-              <svg width="100%" height="100%" className="opacity-[0.06]">
+              <svg width="100%" height="100%" className="opacity-[0.12]">
                 <defs>
                   <pattern id="mapgrid" width="50" height="50" patternUnits="userSpaceOnUse">
                     <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#00ff44" strokeWidth="0.5" />
@@ -195,22 +195,22 @@ export default function SightingsMap() {
               {/* Latitude lines */}
               {[-60, -30, 0, 30, 60].map((lat) => {
                 const { y } = project(lat, 0);
-                return <line key={`lat${lat}`} x1="0" y1={y} x2="1000" y2={y} stroke="#00ff44" strokeWidth="0.3" opacity="0.08" />;
+                return <line key={`lat${lat}`} x1="0" y1={y} x2="1000" y2={y} stroke="#00ff44" strokeWidth="0.4" opacity="0.15" />;
               })}
               {/* Longitude lines */}
               {[-120, -60, 0, 60, 120].map((lng) => {
                 const { x } = project(0, lng);
-                return <line key={`lng${lng}`} x1={x} y1="0" x2={x} y2="500" stroke="#00ff44" strokeWidth="0.3" opacity="0.08" />;
+                return <line key={`lng${lng}`} x1={x} y1="0" x2={x} y2="500" stroke="#00ff44" strokeWidth="0.4" opacity="0.15" />;
               })}
 
               {/* ── LANDMASS FILL (subtle) ── */}
-              <g fill="#00ff44" fillOpacity="0.03" stroke="none">
+              <g fill="#00ff44" fillOpacity="0.08" stroke="none">
                 {WORLD_MAP_PATHS.map((d, i) => (
                   <path key={`fill-${i}`} d={d} />
                 ))}
               </g>
               {/* ── COASTLINE OUTLINES (detailed) ── */}
-              <g fill="none" stroke="#00ff44" strokeWidth="0.8" strokeLinejoin="round" strokeLinecap="round" opacity="0.3">
+              <g fill="none" stroke="#00ff44" strokeWidth="1" strokeLinejoin="round" strokeLinecap="round" opacity="0.55">
                 {WORLD_MAP_PATHS.map((d, i) => (
                   <path key={`stroke-${i}`} d={d} />
                 ))}
@@ -226,8 +226,8 @@ export default function SightingsMap() {
                     x1={pa.x} y1={pa.y}
                     x2={pb.x} y2={pb.y}
                     stroke="#ff2b2b"
-                    strokeWidth="0.5"
-                    opacity="0.15"
+                    strokeWidth="0.8"
+                    opacity="0.25"
                     strokeDasharray="4 4"
                   />
                 );
