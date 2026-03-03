@@ -42,17 +42,7 @@ export default function RedactedFiles() {
         REDACTED <span className="text-gnome-red">FILES</span>
       </motion.h2>
 
-      <div className="max-w-3xl mx-auto relative z-10 flex gap-4 items-start">
-        {/* 'me parece que' gnome peeking from the left */}
-        <div className="hidden lg:flex flex-col items-center pt-16 flex-shrink-0">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/gifs/B7M4XUXTDSE477LEQNOBFY2MOYLXO2E5.gif" alt="Thinking gnome" width={100}
-            className="pixel-gif opacity-85" />
-          <p className="font-comic text-[9px] text-gnome-dark/60 text-center mt-1 max-w-[90px]">
-            &ldquo;it seems to me that...&rdquo;
-          </p>
-        </div>
-        <div className="flex-1">
+      <div className="max-w-3xl mx-auto relative z-10">
         {/* Document container - enhanced to stand out */}
         <motion.div
           className="bg-white shadow-[0_20px_60px_rgba(0,0,0,0.4)] relative overflow-hidden border-4 border-gnome-red/20"
@@ -93,7 +83,6 @@ export default function RedactedFiles() {
             </div>
           </div>
         </motion.div>
-        </div> {/* end flex-1 */}
       </div>
     </section>
   );
