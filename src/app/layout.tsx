@@ -2,10 +2,22 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "$GNOMES — THEY WERE NEVER MYTHS",
-  description: "WHY IS NO ONE TALKING ABOUT THIS? The evidence is overwhelming. $GNOMES.",
+  title: "$GNOMES — They Were Never Myths",
+  description: "The evidence is overwhelming. They're real. They're here. $GNOMES",
   icons: {
     icon: "/schizo.png",
+  },
+  openGraph: {
+    title: "$GNOMES — They Were Never Myths",
+    description: "The evidence is overwhelming. They're real. They're here.",
+    images: ["/we found them.png"],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "$GNOMES — They Were Never Myths",
+    description: "The evidence is overwhelming. They're real. They're here.",
+    images: ["/we found them.png"],
   },
 };
 
