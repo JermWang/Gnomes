@@ -162,6 +162,23 @@ export default function Hero() {
         START INVESTIGATING ↓
       </motion.a>
 
+      {/* Twitter/X Link */}
+      <motion.a
+        href="https://x.com/GnomesOnSOL"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="absolute top-7 left-4 z-20 flex items-center gap-2 bg-gnome-dark/80 border border-gnome-purple/50 px-3 py-2 hover:bg-gnome-purple/20 transition-all group"
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.5 }}
+        whileHover={{ scale: 1.05 }}
+      >
+        <svg className="w-4 h-4 fill-gnome-purple-light group-hover:fill-gnome-yellow transition-colors" viewBox="0 0 24 24">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+        </svg>
+        <span className="font-mono text-xs text-gnome-purple-light group-hover:text-gnome-yellow transition-colors">@GnomesOnSOL</span>
+      </motion.a>
+
       {/* Stamps */}
       <div className="absolute top-7 right-4 stamp text-[10px] z-20 hidden sm:block">
         CLASSIFIED

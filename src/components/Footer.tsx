@@ -75,11 +75,22 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Last updated */}
+          {/* Last updated + Social */}
           <div className="font-mono text-[10px] text-gray-600 text-right">
             <div>LAST UPDATED: <span className="text-gnome-red">{timeStr}</span></div>
             <div className="mt-1 text-gnome-yellow animate-blink">● STAY AWAKE ●</div>
-            <div className="mt-1">🚧 UNDER CONSTRUCTION 🚧</div>
+            <a
+              href="https://x.com/GnomesOnSOL"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 inline-flex items-center gap-1.5 border border-gnome-purple/40 px-2 py-1 hover:bg-gnome-purple/20 transition-all group"
+            >
+              <svg className="w-3 h-3 fill-gnome-purple-light group-hover:fill-gnome-yellow transition-colors" viewBox="0 0 24 24">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
+              <span className="text-gnome-purple-light group-hover:text-gnome-yellow transition-colors">@GnomesOnSOL</span>
+            </a>
+            <div className="mt-2">🚧 UNDER CONSTRUCTION 🚧</div>
           </div>
         </div>
 
