@@ -144,14 +144,11 @@ export default function Hero() {
             <span className="block text-sm mt-1 text-faded-brown">— E. Thornberry, Field Naturalist, 1897</span>
           </div>
 
-          {/* Wax seal + CTA row */}
+          {/* CTA row */}
           <div className="flex flex-wrap items-center gap-4 mt-2">
             <a href="#observations" className="btn-wood no-underline">
               Begin Reading ↓
             </a>
-            <div className="wax-seal" style={{ transform: "rotate(-8deg)" }}>
-              G.S.
-            </div>
           </div>
 
           {/* Social links — vintage label style */}
