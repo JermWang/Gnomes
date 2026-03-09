@@ -106,11 +106,11 @@ export default function Hero() {
             </p>
           </div>
 
-          {/* Handwritten annotation arrow */}
-          <div className="absolute -bottom-4 right-4 md:right-0 font-handwritten text-rust text-lg" style={{ transform: "rotate(5deg)" }}>
+          {/* Handwritten annotation arrow - positioned over the red hat */}
+          <div className="absolute top-8 right-8 md:top-12 md:right-12 font-handwritten text-rust text-lg" style={{ transform: "rotate(-8deg)" }}>
             <svg className="inline-block w-8 h-8 mr-1" viewBox="0 0 40 40">
-              <path d="M5,35 C15,20 25,15 35,8" fill="none" stroke="#9b4b3f" strokeWidth="1.5" strokeLinecap="round" />
-              <path d="M28,5 L35,8 L30,14" fill="none" stroke="#9b4b3f" strokeWidth="1.5" strokeLinecap="round" />
+              <path d="M35,5 C25,15 15,20 5,30" fill="none" stroke="#9b4b3f" strokeWidth="1.5" strokeLinecap="round" />
+              <path d="M12,25 L5,30 L10,35" fill="none" stroke="#9b4b3f" strokeWidth="1.5" strokeLinecap="round" />
             </svg>
             note the red cap
           </div>
