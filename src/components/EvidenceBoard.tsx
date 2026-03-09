@@ -15,8 +15,8 @@ interface Observation {
 const OBSERVATIONS: Observation[] = [
   {
     id: "o1",
-    image: "/hidinggnomes.png",
-    caption: "Observed near a stone wall at dusk. Subjects appeared to be foraging.",
+    image: "/gnomes playing.png",
+    caption: "A lively group observed at play in the meadow, wholly unaware of the observer's presence.",
     plate: "Plate II",
     rotation: -1.5,
     style: "plate",
