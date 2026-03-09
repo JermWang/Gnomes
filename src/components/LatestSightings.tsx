@@ -5,7 +5,7 @@ import Image from "next/image";
 const SIGHTINGS = [
   { image: "/gnome on shroom.png", caption: "Seen perched atop a toadstool near the village well, October 1897." },
   { image: "/gnomeland.png", caption: "A small company observed crossing the meadow at first light, May 1893." },
-  { image: "/hidinggnomes.png", caption: "Discovered sheltering beneath ivy during a summer shower, July 1895." },
+  { image: "/playing.png", caption: "A lively group observed at play in the meadow, summer 1895." },
   { image: "/gnomes watching.png", caption: "Seen watching a family picnic from behind the hedge, June 1897." },
   { image: "/campfire.png", caption: "A small group drawn to the warmth of a human campfire, autumn 1894." },
   { image: "/fishing.png", caption: "Observed along the riverbank, studying a fisherman with quiet curiosity, spring 1896." },
