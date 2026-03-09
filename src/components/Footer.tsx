@@ -1,162 +1,132 @@
 "use client";
-import { useState, useEffect } from "react";
-
-const EVIDENCE_IDS = ["e1", "e2", "e3", "e4", "e5", "e6"];
 
 export default function Footer() {
-  const [visitorCount, setVisitorCount] = useState(4872);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setVisitorCount((c) => c + Math.floor(Math.random() * 3));
-    }, 8000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const goToRandom = () => {
-    const id = EVIDENCE_IDS[Math.floor(Math.random() * EVIDENCE_IDS.length)];
-    const el = document.getElementById(`card-${id}`);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "center" });
-      el.classList.add("ring-4", "ring-gnome-yellow");
-      setTimeout(() => el.classList.remove("ring-4", "ring-gnome-yellow"), 2000);
-    }
-  };
-
   const now = new Date();
-  const timeStr = now.toLocaleTimeString("en-US", {
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: false,
-  });
 
   return (
-    <footer className="relative overflow-hidden bg-gnome-dark border-t-2 border-gnome-red/30">
+    <footer className="relative overflow-hidden bg-forest/95 border-t-2 border-faded-brown/30">
+      {/* Paper texture overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.03]"
+        style={{
+          backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
+        }}
+      />
 
-      {/* ── 88×31 GIF BANNER STRIP (top of footer — GIFs only) ── */}
-      <div className="bg-[#0a0a14] border-b border-gnome-purple/20 py-2 px-2 sm:px-4 flex flex-wrap items-center justify-center gap-2 sm:gap-3 overflow-hidden">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/gifs/871.gif"      alt="Waar is jy"    className="h-8 opacity-90 hover:opacity-100 transition-opacity" />
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/gifs/japtext.gif"  alt="Japanese text" className="h-8 opacity-90 hover:opacity-100 transition-opacity" />
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/gifs/911.gif"      alt="9-11-2001"     className="h-8 opacity-90 hover:opacity-100 transition-opacity" />
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/gifs/FEMEZBBMFPRTHYZSLFRGF56BF2QYMI44.gif" alt="Gnome" className="h-8 pixel-gif opacity-80" />
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/gifs/AZTOSQLI6ZII47J2JOSUYKAIUAWOKASD.gif" alt="Gnome" className="h-8 pixel-gif opacity-70" />
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/gifs/1107.gif" alt="Gnome" className="h-8 pixel-gif opacity-80" />
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/gifs/5GBPEKPY4LQRCKJAAHWB5TTQSHSAK4PI.gif" alt="Gnome" className="h-8 pixel-gif opacity-75" />
-      </div>
+      <div className="relative z-10 py-14 px-4 max-w-4xl mx-auto">
+        {/* Top section — ornamental border */}
+        <div className="flex items-center gap-4 mb-10">
+          <div className="h-px flex-1 bg-parchment/20" />
+          <svg className="w-10 h-10 text-parchment/30" viewBox="0 0 40 40">
+            <path d="M20,5 C10,12 5,20 10,30 C15,25 18,18 20,12 C22,18 25,25 30,30 C35,20 30,12 20,5"
+              fill="none" stroke="currentColor" strokeWidth="1.2" />
+            <circle cx="20" cy="18" r="2" fill="currentColor" opacity="0.5" />
+          </svg>
+          <div className="h-px flex-1 bg-parchment/20" />
+        </div>
 
-      <div className="relative z-20 py-10 px-4 max-w-4xl mx-auto">
-
-        {/* Gnome mascot + counter row */}
-        <div className="flex flex-col sm:flex-row flex-wrap items-center justify-between gap-4 sm:gap-6 mb-8">
-
-          {/* wizardgnome mascot */}
-          <div className="flex items-center gap-3">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/gifs/wizardgnome.gif" alt="Wizard Gnome" width={56}
-              className="opacity-80 drop-shadow-[0_0_8px_rgba(123,60,255,0.6)]" />
-            <div>
-              <p className="font-comic text-gnome-purple-light text-xs animate-blink">STAY AWAKE.</p>
-              <p className="font-mono text-[9px] text-gray-600">HE IS ALWAYS WATCHING.</p>
+        {/* Main footer content */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+          {/* Column 1 — About */}
+          <div>
+            <h3 className="font-heading text-parchment text-lg mb-3">The Gnome Studies Society</h3>
+            <p className="font-body text-parchment/60 text-sm leading-relaxed">
+              Dedicated to the careful observation and documentation of gnome populations across the European countryside since 1889.
+            </p>
+            <div className="mt-4 wax-seal" style={{ transform: "rotate(-5deg)" }}>
+              G.S.S.
             </div>
           </div>
 
-          {/* Visitor counter */}
-          <div className="font-mono text-xs text-gray-500 text-center">
-            <div className="text-gnome-yellow mb-1">YOU ARE VISITOR #</div>
-            <div className="bg-black border border-green-900 px-3 py-1 text-green-400 tracking-[0.3em] text-base font-bold">
-              {String(visitorCount).padStart(10, "0")}
+          {/* Column 2 — Navigation */}
+          <div>
+            <h3 className="font-heading text-parchment text-lg mb-3">Contents</h3>
+            <nav className="flex flex-col gap-2">
+              {[
+                { label: "Title Page", href: "#hero" },
+                { label: "Field Observations", href: "#observations" },
+                { label: "Anatomical Study", href: "#anatomy" },
+                { label: "Human Encounters", href: "#encounters" },
+                { label: "Latest Sightings", href: "#sightings" },
+              ].map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="font-body text-parchment/50 text-sm hover:text-parchment transition-colors no-underline flex items-center gap-2"
+                >
+                  <span className="text-rust/60">&mdash;</span>
+                  {link.label}
+                </a>
+              ))}
+            </nav>
+          </div>
+
+          {/* Column 3 — Correspondence */}
+          <div>
+            <h3 className="font-heading text-parchment text-lg mb-3">Correspondence</h3>
+            <p className="font-body text-parchment/60 text-sm mb-4">
+              Reports of new sightings may be submitted through the following channels.
+            </p>
+            <div className="flex flex-col gap-2">
+              <a
+                href="https://x.com/GnomesOnSOL"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 font-body text-sm text-parchment/60 hover:text-parchment transition-colors no-underline"
+              >
+                <svg className="w-4 h-4 fill-parchment/50" viewBox="0 0 24 24">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
+                @GnomesOnSOL
+              </a>
+              <a
+                href="https://t.me/GnomesPortal"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 font-body text-sm text-parchment/60 hover:text-parchment transition-colors no-underline"
+              >
+                <svg className="w-4 h-4 fill-parchment/50" viewBox="0 0 24 24">
+                  <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+                </svg>
+                Telegram
+              </a>
             </div>
           </div>
-
-          {/* Last updated + Social */}
-          <div className="font-mono text-[10px] text-gray-600 text-center sm:text-right">
-            <div>LAST UPDATED: <span className="text-gnome-red">{timeStr}</span></div>
-            <div className="mt-1 text-gnome-yellow animate-blink">● STAY AWAKE ●</div>
-            <a
-              href="https://x.com/GnomesOnSOL"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-2 inline-flex items-center gap-1.5 border border-gnome-purple/40 px-2 py-1 hover:bg-gnome-purple/20 transition-all group"
-            >
-              <svg className="w-3 h-3 fill-gnome-purple-light group-hover:fill-gnome-yellow transition-colors" viewBox="0 0 24 24">
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-              </svg>
-              <span className="text-gnome-purple-light group-hover:text-gnome-yellow transition-colors">@GnomesOnSOL</span>
-            </a>
-            <a
-              href="https://t.me/GnomesPortal"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-1 inline-flex items-center gap-1.5 border border-gnome-purple/40 px-2 py-1 hover:bg-gnome-purple/20 transition-all group"
-            >
-              <svg className="w-3 h-3 fill-gnome-purple-light group-hover:fill-gnome-yellow transition-colors" viewBox="0 0 24 24">
-                <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
-              </svg>
-              <span className="text-gnome-purple-light group-hover:text-gnome-yellow transition-colors">Telegram</span>
-            </a>
-            <div className="mt-2">🚧 UNDER CONSTRUCTION 🚧</div>
-          </div>
         </div>
 
-        {/* ── GNOME TRUTH WEBRING ── */}
-        <div className="border border-gnome-purple/30 bg-[#0d0d1a] p-4 mb-8 text-center">
-          <p className="font-mono text-[10px] text-gnome-purple-light tracking-widest mb-3">
-            ✦ GNOME TRUTH WEB RING ✦
-          </p>
-          <div className="flex items-center justify-center gap-3 flex-wrap">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/gifs/AZTOSQLI6ZII47J2JOSUYKAIUAWOKASD.gif" alt="Gnome" width={32} className="opacity-60" />
-            <button className="font-mono text-xs text-gnome-purple hover:text-gnome-purple-light border border-gnome-purple/40 px-3 py-1 transition-colors">
-              [← prev]
-            </button>
-            <button
-              onClick={goToRandom}
-              className="font-mono text-xs text-gnome-red hover:text-gnome-yellow border border-gnome-red/40 px-3 py-1 transition-colors"
-            >
-              [random]
-            </button>
-            <button className="font-mono text-xs text-gnome-purple hover:text-gnome-purple-light border border-gnome-purple/40 px-3 py-1 transition-colors">
-              [next →]
-            </button>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/gifs/AZTOSQLI6ZII47J2JOSUYKAIUAWOKASD.gif" alt="Gnome" width={32}
-              className="opacity-60" style={{ transform: "scaleX(-1)" }} />
-          </div>
+        {/* Bottom — decorative small sketches */}
+        <div className="flex items-center gap-4 mb-6">
+          <div className="h-px flex-1 bg-parchment/15" />
+          {/* Small mushroom */}
+          <svg className="w-5 h-6 text-parchment/20" viewBox="0 0 20 24">
+            <ellipse cx="10" cy="8" rx="8" ry="6" fill="none" stroke="currentColor" strokeWidth="1" />
+            <line x1="10" y1="14" x2="10" y2="22" stroke="currentColor" strokeWidth="1" />
+          </svg>
+          {/* Small leaf */}
+          <svg className="w-5 h-5 text-parchment/20" viewBox="0 0 20 20">
+            <path d="M10,2 C4,6 2,12 6,16 C8,13 9,9 10,5 C11,9 12,13 14,16 C18,12 16,6 10,2" fill="none" stroke="currentColor" strokeWidth="1" />
+          </svg>
+          {/* Small flower */}
+          <svg className="w-5 h-5 text-parchment/20" viewBox="0 0 20 20">
+            <circle cx="10" cy="8" r="3" fill="none" stroke="currentColor" strokeWidth="0.8" />
+            <circle cx="7" cy="5" r="3" fill="none" stroke="currentColor" strokeWidth="0.8" />
+            <circle cx="13" cy="5" r="3" fill="none" stroke="currentColor" strokeWidth="0.8" />
+            <line x1="10" y1="11" x2="10" y2="18" stroke="currentColor" strokeWidth="0.8" />
+          </svg>
+          <div className="h-px flex-1 bg-parchment/15" />
         </div>
 
-        {/* Bottom fine print */}
-        <div className="text-center border-t border-gray-800 pt-6 space-y-2">
-          <p className="font-mono text-[10px] text-gray-600">
-            © {now.getFullYear()} DEPARTMENT OF SUBTERRANEAN AFFAIRS — ALL FILES SEALED — DO NOT DISSEMINATE
+        {/* Fine print */}
+        <div className="text-center space-y-2">
+          <p className="font-body text-parchment/40 text-xs">
+            &copy; {now.getFullYear()} The Gnome Studies Society &mdash; All observations documented in good faith
           </p>
-          <p className="font-mono text-[9px] text-gray-700">
-            $GNOMES IS NOT A SECURITY. THIS IS FOLKLORE. WE ARE JUST REPORTING THE EVIDENCE.
+          <p className="font-handwritten text-parchment/30 text-sm">
+            &ldquo;Look closely, for they are always nearer than you think.&rdquo;
           </p>
-          <p className="font-comic text-[10px] text-gray-700">
-            made with paranoia and $GNOMES ✦ hosted on the dark web (jk)
+          <p className="font-body text-parchment/25 text-[10px] mt-4">
+            $GNOMES is a community folklore project. This is not financial advice. We are merely documenting the evidence.
           </p>
-          <p className="font-mono text-[8px] text-gray-700 mt-3">
-            BEST VIEWED IN 800×600 · NETSCAPE NAVIGATOR 4.0 · IE6 COMPATIBLE
-          </p>
-          {/* GIFs-only row */}
-          <div className="flex items-center justify-center gap-3 mt-2">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/gifs/B7M4XUXTDSE477LEQNOBFY2MOYLXO2E5.gif" alt="Thinking gnome" width={50}
-              className="pixel-gif opacity-50" />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/gifs/wizardgnome.gif" alt="Wizard gnome" width={40}
-              className="pixel-gif opacity-40" />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/gifs/B7M4XUXTDSE477LEQNOBFY2MOYLXO2E5.gif" alt="Thinking gnome" width={50}
-              className="pixel-gif opacity-50" style={{ transform: "scaleX(-1)" }} />
-          </div>
         </div>
       </div>
     </footer>

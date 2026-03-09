@@ -1,11 +1,11 @@
 "use client";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
+import Image from "next/image";
 
 const TOKEN_ADDRESS = process.env.NEXT_PUBLIC_TOKEN_ADDRESS || "";
 
 export default function Hero() {
-  const [flash, setFlash] = useState(false);
   const [copied, setCopied] = useState(false);
 
   const copyAddress = async () => {
@@ -14,7 +14,6 @@ export default function Hero() {
       setCopied(true);
       setTimeout(() => setCopied(false), 1500);
     } catch {
-      // fallback
       const ta = document.createElement("textarea");
       ta.value = TOKEN_ADDRESS;
       document.body.appendChild(ta);
@@ -26,206 +25,181 @@ export default function Hero() {
     }
   };
 
-  const handleClick = () => {
-    setFlash(true);
-    setTimeout(() => setFlash(false), 300);
-  };
-
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden scanlines"
-      style={{ background: "url('/we found them.png') center center / cover no-repeat" }}
+      className="relative min-h-screen flex items-center justify-center overflow-hidden paper-texture parchment-page"
     >
-      {/* Dark overlay for text readability */}
-      <div className="absolute inset-0 bg-black/35 pointer-events-none" />
-
-      {/* Camera flash */}
-      <AnimatePresence>
-        {flash && (
-          <motion.div
-            className="fixed inset-0 bg-white z-50 pointer-events-none"
-            initial={{ opacity: 1 }}
-            animate={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-          />
-        )}
-      </AnimatePresence>
-
-      {/* ── TOP TICKER ── */}
-      <div className="absolute top-0 left-0 right-0 bg-gnome-red overflow-hidden py-1 z-20">
-        <div className="marquee-track whitespace-nowrap">
-          {Array.from({ length: 8 }).map((_, i) => (
-            <span key={i} className="inline-block mx-6 font-impact text-sm tracking-widest text-white">
-              ★ $GNOMES ★ SUBTERRANEAN ACTIVITY DETECTED ★ THEY WERE NEVER MYTHS ★ LOOK CLOSER ★ STAY AWAKE ★
-            </span>
-          ))}
-        </div>
-      </div>
-
-      {/* BREAKING tag */}
-      <motion.div
-        className="absolute top-7 left-4 bg-gnome-red text-white font-impact text-xs px-2 py-1 z-20 animate-blink hidden sm:block"
-        initial={{ x: -100 }}
-        animate={{ x: 0 }}
-      >
-        ● BREAKING NEWS
-      </motion.div>
-
-      {/* ── SCATTERED GIFS ── */}
-
-      {/* wizardgnome — LEFT hero mascot */}
-      <div className="absolute left-0 md:left-10 bottom-14 z-10 pointer-events-none hidden sm:block">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/gifs/wizardgnome.gif" alt="Wizard Gnome" width={150}
-          className="opacity-95 drop-shadow-[0_0_18px_rgba(123,60,255,0.9)]" />
-        <p className="font-comic text-gnome-yellow text-[10px] text-center mt-1 animate-blink">HE KNOWS.</p>
-      </div>
-
-      {/* pixel gnome strip — right side */}
-      <div className="absolute right-4 md:right-14 bottom-16 z-10 pointer-events-none hidden sm:block">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/gifs/FEMEZBBMFPRTHYZSLFRGF56BF2QYMI44.gif" alt="Classic Gnome" width={54}
-          className="pixel-gif opacity-85" />
-        <p className="font-mono text-[8px] text-gnome-red text-center mt-1">UNIT 7</p>
-      </div>
-
-
-      {/* ── MAIN CONTENT ── */}
-      <div className="relative z-10 mb-1 mt-10" style={{ transform: "rotate(0.8deg)" }}>
-        <span className="font-mono text-[9px] text-gnome-yellow/50 tracking-[0.4em]">
-          {"//"} DECLASSIFIED TRANSMISSION {"//"}
-        </span>
-      </div>
-
-      <motion.h1
-        className="font-impact text-4xl sm:text-5xl md:text-8xl lg:text-[7rem] text-white text-center cursor-pointer select-none z-10 relative px-4 leading-none"
-        style={{ transform: "rotate(-2deg)", textShadow: "4px 4px 0px #ff2b2b, 8px 8px 0px rgba(123,60,255,0.25)" }}
-        onClick={handleClick}
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.98 }}
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-      >
-        THEY WERE NEVER <span className="text-gnome-red">MYTHS.</span>
-      </motion.h1>
-
-      <motion.p
-        className="font-mono text-gnome-yellow text-base md:text-2xl mt-3 text-center z-10 tracking-wider px-4"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.5 }}
-      >
-        WHY IS NO ONE TALKING ABOUT THIS?
-      </motion.p>
-
-      <motion.p
-        className="font-impact text-gnome-purple-light text-3xl md:text-5xl mt-5 z-10"
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.8, type: "spring" }}
-      >
-        $GNOMES
-      </motion.p>
-
-      {/* Contract address + Twitter row */}
-      <motion.div
-        className="mt-6 z-10 flex flex-col sm:flex-row items-center gap-3 px-4 w-full sm:w-auto"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.0 }}
-      >
-        {/* Copy Contract Address — 3D retro button */}
-        {TOKEN_ADDRESS && (
-          <motion.button
-            onClick={copyAddress}
-            className="flex items-center gap-2 font-mono text-[10px] sm:text-xs md:text-sm px-3 sm:px-5 py-2.5 text-white rounded-sm w-full sm:w-auto justify-center"
-            style={{
-              background: "linear-gradient(180deg, #9b4dff 0%, #6a1fcf 50%, #5010a8 100%)",
-              boxShadow: "0 4px 0 #3a0980, 0 6px 12px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.25)",
-              border: "2px solid #7b3cff",
-              textShadow: "1px 1px 2px rgba(0,0,0,0.6)",
-            }}
-            whileHover={{ y: -1 }}
-            whileTap={{ y: 3, boxShadow: "0 1px 0 #3a0980, 0 2px 4px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.15)" }}
-          >
-            <span className="truncate max-w-[140px] sm:max-w-[160px] md:max-w-[220px]">
-              {TOKEN_ADDRESS}
-            </span>
-            <span className={`shrink-0 font-bold ${copied ? "text-green-300" : "text-yellow-300"}`}>
-              {copied ? "COPIED ✓" : "📋 COPY"}
-            </span>
-          </motion.button>
-        )}
-
-        {/* Twitter/X — 3D retro button */}
-        <motion.a
-          href="https://x.com/GnomesOnSOL"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-2 font-mono text-xs md:text-sm px-4 sm:px-5 py-2.5 text-white rounded-sm no-underline w-full sm:w-auto justify-center"
-          style={{
-            background: "linear-gradient(180deg, #444 0%, #222 50%, #111 100%)",
-            boxShadow: "0 4px 0 #000, 0 6px 12px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.2)",
-            border: "2px solid #555",
-            textShadow: "1px 1px 2px rgba(0,0,0,0.8)",
-          }}
-          whileHover={{ y: -1 }}
-          whileTap={{ y: 3, boxShadow: "0 1px 0 #000, 0 2px 4px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1)" }}
-        >
-          <svg className="w-4 h-4 fill-white" viewBox="0 0 24 24">
-            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-          </svg>
-          <span>@GnomesOnSOL</span>
-        </motion.a>
-
-        {/* Telegram — 3D retro button */}
-        <motion.a
-          href="https://t.me/GnomesPortal"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-2 font-mono text-xs md:text-sm px-4 sm:px-5 py-2.5 text-white rounded-sm no-underline w-full sm:w-auto justify-center"
-          style={{
-            background: "linear-gradient(180deg, #2AABEE 0%, #1E90D0 50%, #1578B0 100%)",
-            boxShadow: "0 4px 0 #0e5a82, 0 6px 12px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.25)",
-            border: "2px solid #2AABEE",
-            textShadow: "1px 1px 2px rgba(0,0,0,0.6)",
-          }}
-          whileHover={{ y: -1 }}
-          whileTap={{ y: 3, boxShadow: "0 1px 0 #0e5a82, 0 2px 4px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1)" }}
-        >
-          <svg className="w-4 h-4 fill-white" viewBox="0 0 24 24">
-            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
-          </svg>
-          <span>Telegram</span>
-        </motion.a>
-      </motion.div>
-
-      <motion.a
-        href="#evidence"
-        className="mt-5 z-10 font-mono px-6 py-3 text-white text-base md:text-lg rounded-sm no-underline"
+      {/* Aged paper vignette */}
+      <div
+        className="absolute inset-0 pointer-events-none"
         style={{
-          background: "linear-gradient(180deg, #ff4444 0%, #cc1111 50%, #aa0000 100%)",
-          boxShadow: "0 4px 0 #660000, 0 6px 12px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.2)",
-          border: "2px solid #ff2b2b",
-          textShadow: "1px 1px 2px rgba(0,0,0,0.6)",
+          boxShadow: "inset 0 0 150px rgba(122, 90, 68, 0.15), inset 0 0 60px rgba(0,0,0,0.05)",
         }}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.2 }}
-        whileHover={{ y: -1 }}
-        whileTap={{ y: 3, boxShadow: "0 1px 0 #660000, 0 2px 4px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1)" }}
-      >
-        START INVESTIGATING ↓
-      </motion.a>
+      />
 
-      {/* Stamps */}
-      <div className="absolute top-7 right-4 stamp text-[10px] z-20 hidden sm:block">
-        CLASSIFIED
+      {/* Decorative corner ornaments */}
+      <svg className="absolute top-6 left-6 w-16 h-16 text-faded-brown/30" viewBox="0 0 100 100">
+        <path d="M0,0 Q50,10 50,50 Q10,50 0,0" fill="none" stroke="currentColor" strokeWidth="1.5" />
+        <circle cx="8" cy="8" r="3" fill="currentColor" />
+        <path d="M15,5 Q25,15 20,25" fill="none" stroke="currentColor" strokeWidth="1" />
+      </svg>
+      <svg className="absolute top-6 right-6 w-16 h-16 text-faded-brown/30" viewBox="0 0 100 100" style={{ transform: "scaleX(-1)" }}>
+        <path d="M0,0 Q50,10 50,50 Q10,50 0,0" fill="none" stroke="currentColor" strokeWidth="1.5" />
+        <circle cx="8" cy="8" r="3" fill="currentColor" />
+        <path d="M15,5 Q25,15 20,25" fill="none" stroke="currentColor" strokeWidth="1" />
+      </svg>
+      <svg className="absolute bottom-6 left-6 w-16 h-16 text-faded-brown/30" viewBox="0 0 100 100" style={{ transform: "scaleY(-1)" }}>
+        <path d="M0,0 Q50,10 50,50 Q10,50 0,0" fill="none" stroke="currentColor" strokeWidth="1.5" />
+        <circle cx="8" cy="8" r="3" fill="currentColor" />
+      </svg>
+      <svg className="absolute bottom-6 right-6 w-16 h-16 text-faded-brown/30" viewBox="0 0 100 100" style={{ transform: "scale(-1,-1)" }}>
+        <path d="M0,0 Q50,10 50,50 Q10,50 0,0" fill="none" stroke="currentColor" strokeWidth="1.5" />
+        <circle cx="8" cy="8" r="3" fill="currentColor" />
+      </svg>
+
+      {/* Small decorative mushroom sketches */}
+      <svg className="absolute top-24 right-16 w-12 h-14 text-moss/20 hidden md:block" viewBox="0 0 50 60">
+        <ellipse cx="25" cy="20" rx="18" ry="14" fill="none" stroke="currentColor" strokeWidth="1.5" />
+        <line x1="25" y1="34" x2="25" y2="55" stroke="currentColor" strokeWidth="1.5" />
+        <circle cx="18" cy="16" r="2" fill="currentColor" opacity="0.4" />
+        <circle cx="30" cy="12" r="1.5" fill="currentColor" opacity="0.4" />
+        <circle cx="24" cy="22" r="2.5" fill="currentColor" opacity="0.3" />
+      </svg>
+
+      <svg className="absolute bottom-32 left-12 w-10 h-10 text-moss/20 hidden md:block" viewBox="0 0 40 40">
+        <path d="M10,35 C10,20 5,15 20,5 C35,15 30,20 30,35" fill="none" stroke="currentColor" strokeWidth="1.2" />
+        <line x1="20" y1="15" x2="20" y2="35" stroke="currentColor" strokeWidth="0.8" />
+      </svg>
+
+      {/* Clover sketch */}
+      <svg className="absolute top-40 left-20 w-8 h-8 text-forest/15 hidden lg:block" viewBox="0 0 40 40">
+        <circle cx="14" cy="14" r="7" fill="none" stroke="currentColor" strokeWidth="1" />
+        <circle cx="26" cy="14" r="7" fill="none" stroke="currentColor" strokeWidth="1" />
+        <circle cx="20" cy="8" r="7" fill="none" stroke="currentColor" strokeWidth="1" />
+        <line x1="20" y1="20" x2="20" y2="38" stroke="currentColor" strokeWidth="1" />
+      </svg>
+
+      {/* Main content - book spread layout */}
+      <div className="relative z-10 max-w-6xl w-full mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
+
+        {/* LEFT — Large gnome illustration plate */}
+        <motion.div
+          className="relative"
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <div className="plate-frame max-w-md mx-auto" style={{ transform: "rotate(-1.5deg)" }}>
+            <div className="relative aspect-[3/4] w-full overflow-hidden">
+              <Image
+                src="/gnome on shroom.png"
+                alt="Field illustration — Gnome specimen observed atop fungal growth"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 90vw, 40vw"
+                priority
+              />
+            </div>
+            <p className="font-handwritten text-center text-faded-brown mt-2 text-sm">
+              Plate I — Specimen observed atop Amanita muscaria, autumn 1893
+            </p>
+          </div>
+
+          {/* Handwritten annotation arrow */}
+          <div className="absolute -bottom-4 right-4 md:right-0 font-handwritten text-rust text-lg" style={{ transform: "rotate(5deg)" }}>
+            <svg className="inline-block w-8 h-8 mr-1" viewBox="0 0 40 40">
+              <path d="M5,35 C15,20 25,15 35,8" fill="none" stroke="#9b4b3f" strokeWidth="1.5" strokeLinecap="round" />
+              <path d="M28,5 L35,8 L30,14" fill="none" stroke="#9b4b3f" strokeWidth="1.5" strokeLinecap="round" />
+            </svg>
+            note the red cap
+          </div>
+        </motion.div>
+
+        {/* RIGHT — Journal text description */}
+        <motion.div
+          className="flex flex-col gap-6"
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          {/* Small decorative header line */}
+          <div className="flex items-center gap-3">
+            <div className="h-px flex-1 bg-faded-brown/30" />
+            <span className="font-handwritten text-faded-brown text-sm tracking-wider">Vol. XII — Spring Edition</span>
+            <div className="h-px flex-1 bg-faded-brown/30" />
+          </div>
+
+          <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-ink leading-[1.1] tracking-tight">
+            The Hidden World{" "}
+            <span className="italic text-forest">of Gnomes</span>
+          </h1>
+
+          <p className="font-body text-lg md:text-xl text-ink/80 leading-relaxed">
+            Field observations collected from quiet gardens, meadows, and forests across the European countryside.
+          </p>
+
+          <div className="field-note" style={{ transform: "rotate(-0.5deg)" }}>
+            &ldquo;They move among the roots and stones with a purpose we are only beginning to understand.&rdquo;
+            <span className="block text-sm mt-1 text-faded-brown">— E. Thornberry, Field Naturalist, 1897</span>
+          </div>
+
+          {/* Wax seal + CTA row */}
+          <div className="flex flex-wrap items-center gap-4 mt-2">
+            <a href="#observations" className="btn-wood no-underline">
+              Begin Reading ↓
+            </a>
+            <div className="wax-seal" style={{ transform: "rotate(-8deg)" }}>
+              G.S.
+            </div>
+          </div>
+
+          {/* Social links — vintage label style */}
+          <div className="flex flex-wrap items-center gap-3 mt-2">
+            {TOKEN_ADDRESS && (
+              <button
+                onClick={copyAddress}
+                className="btn-tag text-xs flex items-center gap-2"
+              >
+                <span className="truncate max-w-[140px] sm:max-w-[180px]">{TOKEN_ADDRESS}</span>
+                <span className="font-handwritten text-rust">
+                  {copied ? "✓ copied" : "copy"}
+                </span>
+              </button>
+            )}
+            <a
+              href="https://x.com/GnomesOnSOL"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-tag text-xs no-underline flex items-center gap-2"
+            >
+              <svg className="w-3.5 h-3.5 fill-ink" viewBox="0 0 24 24">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
+              @GnomesOnSOL
+            </a>
+            <a
+              href="https://t.me/GnomesPortal"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-tag text-xs no-underline flex items-center gap-2"
+            >
+              <svg className="w-3.5 h-3.5 fill-ink" viewBox="0 0 24 24">
+                <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+              </svg>
+              Telegram
+            </a>
+          </div>
+        </motion.div>
       </div>
-      <div className="absolute bottom-12 left-4 font-mono text-[10px] text-gnome-bg/30 z-10">
-        CAM_04 // MOTION TRIGGERED
+
+      {/* Bottom annotation arrows */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center">
+        <p className="font-handwritten text-faded-brown text-sm mb-2">scroll to continue reading</p>
+        <svg className="w-6 h-10 text-faded-brown/50" viewBox="0 0 24 40">
+          <path d="M12,2 L12,32" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+          <path d="M6,26 L12,34 L18,26" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
       </div>
     </section>
   );

@@ -9,47 +9,42 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        "gnome-red": "#ff2b2b",
-        "gnome-purple": "#7b3cff",
-        "gnome-purple-light": "#a06bff",
-        "gnome-yellow": "#ffe95c",
-        "gnome-bg": "#f2f2f2",
-        "gnome-dark": "#0b0b10",
+        parchment: "#f4efe6",
+        "aged-paper": "#ede6d8",
+        moss: "#5c6b4d",
+        forest: "#3f4f3a",
+        rust: "#9b4b3f",
+        "faded-brown": "#7a5a44",
+        ink: "#2a2a2a",
+        "warm-cream": "#faf6ee",
       },
       fontFamily: {
-        impact: ["Impact", "Arial Black", "sans-serif"],
-        mono: ["Courier New", "monospace"],
-        comic: ["Comic Sans MS", "cursive"],
-        condensed: ["Arial Narrow", "sans-serif"],
+        heading: ["Playfair Display", "Cormorant", "EB Garamond", "serif"],
+        body: ["Spectral", "Libre Baskerville", "serif"],
+        handwritten: ["Caveat", "Kalam", "cursive"],
       },
       animation: {
-        blink: "blink 1s step-end infinite",
-        marquee: "marquee 12s linear infinite",
-        shake: "shake 0.5s ease-in-out",
-        float: "float 3s ease-in-out infinite",
-        pulse_orb: "pulse_orb 2s ease-in-out infinite",
+        "fade-in": "fadeIn 0.8s ease-out forwards",
+        "slide-up": "slideUp 0.6s ease-out forwards",
+        "ink-draw": "inkDraw 1.2s ease-out forwards",
+        "paper-slide": "paperSlide 0.5s ease-out forwards",
       },
       keyframes: {
-        blink: {
-          "0%, 100%": { opacity: "1" },
-          "50%": { opacity: "0" },
+        fadeIn: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
         },
-        marquee: {
-          "0%": { transform: "translateX(100%)" },
-          "100%": { transform: "translateX(-100%)" },
+        slideUp: {
+          "0%": { opacity: "0", transform: "translateY(20px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
         },
-        shake: {
-          "0%, 100%": { transform: "rotate(0deg)" },
-          "25%": { transform: "rotate(-2deg)" },
-          "75%": { transform: "rotate(2deg)" },
+        inkDraw: {
+          "0%": { strokeDashoffset: "100%" },
+          "100%": { strokeDashoffset: "0%" },
         },
-        float: {
-          "0%, 100%": { transform: "translateY(0px)" },
-          "50%": { transform: "translateY(-15px)" },
-        },
-        pulse_orb: {
-          "0%, 100%": { boxShadow: "0 0 20px 5px rgba(123, 60, 255, 0.4)" },
-          "50%": { boxShadow: "0 0 40px 15px rgba(123, 60, 255, 0.8)" },
+        paperSlide: {
+          "0%": { opacity: "0", transform: "translateX(-10px)" },
+          "100%": { opacity: "1", transform: "translateX(0)" },
         },
       },
     },

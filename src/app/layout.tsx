@@ -2,22 +2,22 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "$GNOMES — They Were Never Myths",
-  description: "The evidence is overwhelming. They're real. They're here. $GNOMES",
+  title: "The Hidden World of Gnomes — A Field Guide",
+  description: "Field observations collected from quiet gardens, meadows, and forests. A naturalist's journal documenting the hidden lives of gnomes.",
   icons: {
-    icon: "/schizo.png",
+    icon: "/gnome on shroom.png",
   },
   openGraph: {
-    title: "$GNOMES — They Were Never Myths",
-    description: "The evidence is overwhelming. They're real. They're here.",
-    images: ["/we found them.png"],
+    title: "The Hidden World of Gnomes — A Field Guide",
+    description: "Field observations collected from quiet gardens, meadows, and forests.",
+    images: ["/gnome on shroom.png"],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "$GNOMES — They Were Never Myths",
-    description: "The evidence is overwhelming. They're real. They're here.",
-    images: ["/we found them.png"],
+    title: "The Hidden World of Gnomes — A Field Guide",
+    description: "Field observations collected from quiet gardens, meadows, and forests.",
+    images: ["/gnome on shroom.png"],
   },
 };
 
@@ -28,7 +28,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-gnome-dark text-white overflow-x-hidden">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Cormorant:ital,wght@0,400;0,600;0,700;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Spectral:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Caveat:wght@400;600;700&family=Kalam:wght@300;400;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="bg-parchment text-ink overflow-x-hidden font-body">
         {children}
       </body>
     </html>
